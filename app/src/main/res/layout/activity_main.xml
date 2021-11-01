@@ -31,17 +31,83 @@
         app:srcCompat="@drawable/heart" />
 
     <TextView
+        android:id="@+id/antalLiv"
         android:layout_width="25dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="5"
         android:textColor="@color/white"
-        android:gravity="center"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
+
+    <TextView
+        android:id="@+id/pointsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="Points:"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/pointsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/pointsTextView"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/ordTilView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Tryk på knappen for at ændre ordet"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/startSpilKnap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_color"
+        android:text="Start Spil"
+        android:textColor="@color/white"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
