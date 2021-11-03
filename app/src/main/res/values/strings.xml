@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">s204465 Lykkehjulet</string>
+    <string name="word1">kotlin</string>
+    <string name="word2">python</string>
+    <string name="word3">java</string>
+    <string name="word4">swift</string>
 </resources>
