@@ -1,18 +1,12 @@
-package com.example.lykkehjul
+package com.example.lykkehjul.view
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.lykkehjul.adapter.ItemAdapter
+import com.example.lykkehjul.R
 import com.example.lykkehjul.data.Datasource
-import com.example.lykkehjul.model.Words
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,13 +39,13 @@ class MainActivity : AppCompatActivity() {
         //var antalLiv: TextView = findViewById(R.id.antalLiv)
 
         startSpilKnap.setOnClickListener {
-            startSpilKnap.setText("Drej hjulet!")
+
+            val intent = Intent(this, PlayGame::class.java)
+            startActivity(intent)
+
+            //startSpilKnap.setText("Drej hjulet!")
             //ordTilView.setText(randomElement2)
 
-            ordTilView.setText("")
-            for(i in charsOfWord2) {
-                ordTilView.append("$i ")
-            }
 
 
             //antalLiv = antalLiv - 1

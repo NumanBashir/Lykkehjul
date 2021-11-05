@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lykkehjul">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.PlayGame"
+            android:exported="true" />
+        <activity
+            android:name=".view.MainActivity"
+            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
