@@ -36,22 +36,11 @@ class MainActivity : AppCompatActivity() {
         val startSpilKnap: Button = findViewById(R.id.startSpilKnap)
         val ordTilView: TextView = findViewById(R.id.ordTilView)
 
-        //var antalLiv: TextView = findViewById(R.id.antalLiv)
-
         startSpilKnap.setOnClickListener {
 
             val intent = Intent(this, PlayGame::class.java)
             startActivity(intent)
 
-            //startSpilKnap.setText("Drej hjulet!")
-            //ordTilView.setText(randomElement2)
-
-
-
-            //antalLiv = antalLiv - 1
-
-            //Make the word invisible
-            //ordTilView.visibility = View.GONE
 
 
         }

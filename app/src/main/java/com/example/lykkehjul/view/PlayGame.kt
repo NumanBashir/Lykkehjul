@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.lykkehjul.GameEvents
 import com.example.lykkehjul.R
 import com.example.lykkehjul.data.Datasource
 
 class PlayGame : AppCompatActivity() {
+
+    private val gameManager = GameEvents()
 
     var lives = 5
     var hemmeligtOrd = ""
@@ -18,6 +21,7 @@ class PlayGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_game)
 
+        val gameState = gameManager.startSpil()
 
         val ord: TextView = findViewById(R.id.ord)
         var secretOrd = ""
@@ -45,36 +49,8 @@ class PlayGame : AppCompatActivity() {
         }
 
 
-        // Recreate display of the secret word based on progress
-        /*private fun refactorSecret() {
-            secretDisplay = ""
-            secretWord.forEach {
-                    s -> secretDisplay += (checkIfGuessed(s.toString()))
-            }
-            toBeGuessed.text = secretDisplay
-        } */
-
     }
 
 
-
-
-
-
-
-    /*fun drejHjul() {
-        val wheelOutcomes = Datasource().loadWheel()
-        val randomOutcome = wheelOutcomes.random().toString()
-
-        drejHjulKnap.setOnClickListener {
-
-
-        }
-
-    } */
-
-    /*Seperate each letter into new char array
-        val charsOfWord2: CharArray = randomElement2.toCharArray()
-        println(charsOfWord2.contentToString()) */
 
 }
