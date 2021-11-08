@@ -22,7 +22,7 @@ class Datasource {
             Words("10.000kr"),
             Words("500kr"),
             Words("10kr"),
-            Words("Miss Tur"),
+            Words("Tabt Tur"),
             Words("Ekstra Tur"),
             Words("Fallit"),
 
