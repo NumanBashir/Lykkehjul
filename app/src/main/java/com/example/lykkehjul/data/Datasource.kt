@@ -1,8 +1,9 @@
 package com.example.lykkehjul.data
 
+import androidx.lifecycle.ViewModel
 import com.example.lykkehjul.model.Words
 
-class Datasource {
+class Datasource: ViewModel() {
 
     fun loadWords(): List<Words> {
         return listOf<Words>(

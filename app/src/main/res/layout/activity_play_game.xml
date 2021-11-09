@@ -96,9 +96,10 @@
 
     <EditText
         android:id="@+id/gætOrd"
-        android:layout_width="260dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
+        android:textSize="25dp"
         android:maxLines="1"
         android:maxLength="1"
         android:hint="Gæt bogstav"

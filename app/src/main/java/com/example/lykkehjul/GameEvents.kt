@@ -7,8 +7,9 @@ import java.lang.StringBuilder
 
 class GameEvents {
 
-    private lateinit var underscoreWord: String
+    private lateinit var underscoreWord1: String
     private lateinit var wordToGuess: String
+    var underscoreWord = ""
 
 
     // Make each letter "_"
