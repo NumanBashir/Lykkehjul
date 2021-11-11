@@ -1,16 +1,17 @@
 package com.example.lykkehjul.data
 
-import androidx.lifecycle.ViewModel
 import com.example.lykkehjul.model.Words
 
-class Datasource: ViewModel() {
+class Memory {
 
     fun loadWords(): List<Words> {
         return listOf<Words>(
             Words("kotlin"),
             Words("java"),
             Words("python"),
-            Words("swift")
+            Words("swift"),
+            Words("c"),
+            Words("javascript")
         )
 
     }

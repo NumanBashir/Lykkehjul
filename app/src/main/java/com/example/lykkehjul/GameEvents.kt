@@ -1,6 +1,6 @@
 package com.example.lykkehjul
 
-import com.example.lykkehjul.data.Datasource
+import com.example.lykkehjul.data.Memory
 import java.lang.StringBuilder
 
 // Use this class to handle all event in the game
@@ -25,7 +25,7 @@ class GameEvents {
     // Start the game
     fun startSpil() {
 
-        val myDataset = Datasource().loadWords()
+        val myDataset = Memory().loadWords()
         var hemmeligtOrd = myDataset.random().toString()
 
         wordToGuess =  hemmeligtOrd

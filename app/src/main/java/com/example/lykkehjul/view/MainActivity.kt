@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.lykkehjul.R
-import com.example.lykkehjul.data.Datasource
+import com.example.lykkehjul.data.Memory
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Load words
-        val myDataset = Datasource().loadWords()
+        val myDataset = Memory().loadWords()
         println(myDataset)
 
         // Pick a random element from dataset
