@@ -9,9 +9,7 @@ class Memory {
             Words("kotlin"),
             Words("java"),
             Words("python"),
-            Words("swift"),
-            Words("c"),
-            Words("javascript")
+            Words("swift")
         )
 
     }
