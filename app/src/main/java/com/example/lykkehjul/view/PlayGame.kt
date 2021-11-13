@@ -2,6 +2,7 @@ package com.example.lykkehjul.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -58,10 +59,6 @@ class PlayGame : AppCompatActivity() {
         tastBogstav = findViewById(R.id.tastBogstav)
 
 
-
-
-
-
         drejHjul()
         guessLetter()
 
@@ -79,7 +76,7 @@ class PlayGame : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_SHORT).show()
                 drejEllerIndtast = false
             } else {
-                Toast.makeText(applicationContext,"Indtast venligst bogstav, else",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -87,12 +84,16 @@ class PlayGame : AppCompatActivity() {
     fun guessLetter() {
         tastBogstav.setOnClickListener {
             if (!drejEllerIndtast) {
-                ord.setText(String(LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, gætBogstav.text.toString())))
-                gætBogstav.setText("")
-                Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
-                drejEllerIndtast = true
+                if(TextUtils.isEmpty(gætBogstav.text.toString())) {
+                    Toast.makeText(applicationContext,"Indtast et bogstav før du går videre",Toast.LENGTH_SHORT).show()
+                } else {
+                    ord.setText(String(LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, gætBogstav.text.toString())))
+                    gætBogstav.setText("")
+                    Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
+                    drejEllerIndtast = true
+                }
             } else {
-                Toast.makeText(applicationContext,"Drej venligst hjulet, else",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"Du har ikke drejet hjulet endnu",Toast.LENGTH_SHORT).show()
             }
 
 
