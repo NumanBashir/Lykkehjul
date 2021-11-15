@@ -21,6 +21,7 @@ class PlayGame : AppCompatActivity() {
     lateinit var drejHjulKnap: Button
     lateinit var wheelOutcomeDisplay: TextView
     lateinit var pointsNumber: TextView
+    lateinit var antalLiv: TextView
 
     private val gameManager = GameEvents()
 
@@ -40,6 +41,7 @@ class PlayGame : AppCompatActivity() {
 
         ord = findViewById(R.id.ord)
         pointsNumber = findViewById(R.id.pointsNumber)
+        antalLiv = findViewById(R.id.antalLiv)
 
 
         // Load words
@@ -54,6 +56,8 @@ class PlayGame : AppCompatActivity() {
             sb.append("_")
         }
         secretOrd = sb.toString()
+
+        Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
 
         // Set textView to the random word
         ord.setText(secretOrd)
@@ -73,14 +77,35 @@ class PlayGame : AppCompatActivity() {
         // Spin wheel
         drejHjulKnap.setOnClickListener {
             if (drejEllerIndtastState) {
+
                 // Get data for loadWheel
                 val wheelOutcomes = Memory().loadWheel()
                 // Set textView to random element from list
                 randomOutcome = wheelOutcomes.random().toString()
                 wheelOutcomeDisplay.setText(randomOutcome)
-                Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_SHORT).show()
-                drejEllerIndtastState = false
+
+                // If spin wheel lands on any of the threes, then lives changes
+                if(randomOutcome.contains("Tabt Tur")) {
+                    Toast.makeText(applicationContext,"Du mistede et liv",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Drej hjulet igen",Toast.LENGTH_SHORT).show()
+                    lives -= 1
+                    antalLiv.setText(lives.toString())
+                } else if(randomOutcome.contains("Ekstra Tur")) {
+                    Toast.makeText(applicationContext,"Du fik et ekstra liv",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Drej hjulet igen",Toast.LENGTH_SHORT).show()
+                    lives += 1
+                    antalLiv.setText(lives.toString())
+                } else if(randomOutcome.contains("Fallit")) {
+                    lives = 0
+                    antalLiv.setText(lives.toString())
+                } else {
+                    // if not any of those, then change state
+                    Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_SHORT).show()
+                    drejEllerIndtastState = false
+                }
+
             } else {
+                // If user has not entered a letter
                 Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
         }
@@ -94,17 +119,6 @@ class PlayGame : AppCompatActivity() {
                 } else {
                     val brugerIndtastet = gætBogstav.text.toString()
                     if (LykkehjulLogic.erBogstavIHemmeligOrd(hemmeligtOrd, brugerIndtastet)) {
-                        /*if (randomOutcome.contains("1.000kr") ||
-                            randomOutcome.contains("2.500kr") ||
-                            randomOutcome.contains("5.000kr") ||
-                            randomOutcome.contains("10.000kr") ||
-                            randomOutcome.contains("500kr") ||
-                            randomOutcome.contains("10kr")) {
-
-
-                            pointsNumber.setText((pointsNumber.text.toString() + 1000))
-
-                        }*/
                             if(randomOutcome.contains("1.000kr")) {
                                 points += 1000
                                 pointsNumber.setText(points.toString())

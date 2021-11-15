@@ -6,7 +6,7 @@ class Memory {
 
     fun loadWords(): List<Words> {
         return listOf<Words>(
-            Words("kotlin"),
+            //Words("kotlin"),
             Words("java"),
             Words("python"),
             Words("swift")
@@ -16,9 +16,9 @@ class Memory {
 
     fun loadWheel(): List<Words> {
         return listOf<Words>(
-            Words("1.000kr"),
-            Words("2.500kr"),
-            Words("5.000kr"),
+            //Words("1.000kr"),
+            //Words("2.500kr"),
+            //Words("5.000kr"),
             Words("10.000kr"),
             Words("500kr"),
             Words("10kr"),
