@@ -21,6 +21,7 @@ class ItemAdapter(private val context: Context, private val dataset: List<Words>
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item, parent, false)
 
+
         return ItemViewHolder(adapterLayout)
     }
 

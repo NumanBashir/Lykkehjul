@@ -86,16 +86,15 @@ class PlayGame : AppCompatActivity() {
 
                 // If spin wheel lands on any of the threes, then lives changes
                 if(randomOutcome.contains("Tabt Tur")) {
-                    Toast.makeText(applicationContext,"Du mistede et liv",Toast.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext,"Drej hjulet igen",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Du mistede et liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
                     lives -= 1
                     antalLiv.setText(lives.toString())
                 } else if(randomOutcome.contains("Ekstra Tur")) {
-                    Toast.makeText(applicationContext,"Du fik et ekstra liv",Toast.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext,"Drej hjulet igen",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Du fik et ekstra liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
                     lives += 1
                     antalLiv.setText(lives.toString())
                 } else if(randomOutcome.contains("Fallit")) {
+                    Toast.makeText(applicationContext,"Du ramte fallit, du tabte",Toast.LENGTH_SHORT).show()
                     lives = 0
                     antalLiv.setText(lives.toString())
                 } else {
@@ -142,6 +141,11 @@ class PlayGame : AppCompatActivity() {
                         ord.setText(String(LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, brugerIndtastet)))
                         gætBogstav.setText("")
                         Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext,"Bostavet var der ikke, du mister et liv, drej hjulet igen ",Toast.LENGTH_SHORT).show()
+                        lives -= 1
+                        antalLiv.setText(lives.toString())
+                        gætBogstav.setText("")
                     }
 
 
