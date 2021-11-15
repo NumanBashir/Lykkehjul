@@ -25,7 +25,7 @@
         android:id="@+id/wheelOutcome"
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="0dp"
         android:gravity="center"
         android:textSize="40dp"
         android:textColor="@color/white"
@@ -34,6 +34,15 @@
         app:layout_constraintTop_toBottomOf="@+id/ord">
 
     </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nyRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wheelOutcome" />
 
     <ImageView
         android:id="@+id/imageView"
