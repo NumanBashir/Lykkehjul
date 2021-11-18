@@ -14,6 +14,7 @@ import com.example.lykkehjul.R
 import com.example.lykkehjul.adapter.ItemAdapter
 import com.example.lykkehjul.data.Memory
 import com.example.lykkehjul.logic.LykkehjulLogic
+import com.example.lykkehjul.model.Words
 import java.lang.StringBuilder
 
 class PlayGame : AppCompatActivity() {
@@ -83,6 +84,22 @@ class PlayGame : AppCompatActivity() {
         tastBogstav = findViewById(R.id.tastBogstav)
 
 
+        val charArray = hemmeligtOrd.toCharArray()
+
+        val data: MutableList<Words> = ArrayList()
+        for(i in charArray) {
+            data.add(Words("_"))
+
+        }
+
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        val adapter = ItemAdapter(data)
+
+        nyRecyclerView.layoutManager = layoutManager
+        nyRecyclerView.setHasFixedSize(true)
+        nyRecyclerView.adapter = adapter
+
+
         drejHjul()
         guessLetter()
 
@@ -101,26 +118,26 @@ class PlayGame : AppCompatActivity() {
 
                 // If spin wheel lands on any of the threes, then lives changes
                 if(randomOutcome.contains("Tabt Tur")) {
-                    Toast.makeText(applicationContext,"Du mistede et liv, drej hjulet igen",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Du mistede et liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
                     lives -= 1
                     antalLiv.setText(lives.toString())
                 } else if(randomOutcome.contains("Ekstra Tur")) {
-                    Toast.makeText(applicationContext,"Du fik et ekstra liv, drej hjulet igen",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Du fik et ekstra liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
                     lives += 1
                     antalLiv.setText(lives.toString())
                 } else if(randomOutcome.contains("Fallit")) {
-                    Toast.makeText(applicationContext,"Du ramte fallit, du tabte",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Du ramte fallit, du tabte",Toast.LENGTH_SHORT).show()
                     lives = 0
                     antalLiv.setText(lives.toString())
                 } else {
                     // if not any of those, then change state
-                    Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_SHORT).show()
                     drejEllerIndtastState = false
                 }
 
             } else {
                 // If user has not entered a letter
-                Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -129,7 +146,7 @@ class PlayGame : AppCompatActivity() {
         tastBogstav.setOnClickListener {
             if (!drejEllerIndtastState) {
                 if(TextUtils.isEmpty(gætBogstav.text.toString())) {
-                    Toast.makeText(applicationContext,"Indtast et bogstav før du går videre",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Indtast et bogstav før du går videre",Toast.LENGTH_SHORT).show()
                 } else {
                     val brugerIndtastet = gætBogstav.text.toString()
                     if (LykkehjulLogic.erBogstavIHemmeligOrd(hemmeligtOrd, brugerIndtastet)) {
@@ -153,9 +170,24 @@ class PlayGame : AppCompatActivity() {
                                 pointsNumber.setText(points.toString())
                             }
 
-                        ord.setText(String(LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, brugerIndtastet)))
-                        gætBogstav.setText("")
-                        Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_LONG).show()
+
+                        val charArray = LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, brugerIndtastet)
+
+                        val data: MutableList<Words> = ArrayList()
+                        for(i in charArray) {
+                            data.add(Words("$i"))
+
+                        }
+
+                        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+                        val adapter = ItemAdapter(data)
+
+                        nyRecyclerView.layoutManager = layoutManager
+                        nyRecyclerView.setHasFixedSize(true)
+                        nyRecyclerView.adapter = adapter
+
+
+                        Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(applicationContext,"Bostavet var der ikke, du mister et liv, drej hjulet igen ",Toast.LENGTH_LONG).show()
                         lives -= 1
@@ -167,7 +199,7 @@ class PlayGame : AppCompatActivity() {
                     drejEllerIndtastState = true
                 }
             } else {
-                Toast.makeText(applicationContext,"Du har ikke drejet hjulet endnu",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Du har ikke drejet hjulet endnu",Toast.LENGTH_SHORT).show()
             }
 
 

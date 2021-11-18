@@ -11,12 +11,12 @@ class Memory {
             //Words("python"),
             //Words("swift")
             Words("tiger"),
-            Words("haj"),
-            Words("fulg"),
-            Words("bjørn"),
-            Words("krokodille"),
-            Words("slange"),
-            Words("edderkop"),
+            //Words("haj"),
+            //Words("fulg"),
+            //Words("bjørn"),
+            //Words("krokodille"),
+            //Words("slange"),
+            //Words("edderkop"),
 
         )
 
