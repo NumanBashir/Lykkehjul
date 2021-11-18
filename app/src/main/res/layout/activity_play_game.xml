@@ -8,19 +8,7 @@
     tools:context=".view.PlayGame">
 
 
-    <TextView
-        android:id="@+id/ord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Gæt ordet"
-        android:letterSpacing="0.5"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/wheelOutcome"
@@ -29,7 +17,7 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nyRecyclerView">
