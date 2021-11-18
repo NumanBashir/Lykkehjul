@@ -38,19 +38,6 @@
 
     </TextView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ordTilView" />
-
     <Button
         android:id="@+id/startSpilKnap"
         android:layout_width="match_parent"

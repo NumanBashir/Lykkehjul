@@ -19,7 +19,7 @@ import java.lang.StringBuilder
 
 class PlayGame : AppCompatActivity() {
 
-    lateinit var ord: TextView
+    lateinit var ord: RecyclerView
     lateinit var tastBogstav: Button
     lateinit var gætBogstav: EditText
     lateinit var drejHjulKnap: Button
@@ -33,7 +33,7 @@ class PlayGame : AppCompatActivity() {
     var lives = 5
     var points = 0
     var visHemmeligOrd = ""
-    var rigtigeGæt = mutableListOf<String>()
+    var underScoreOrd = mutableListOf<Words>()
     var secretOrd = ""
     var hemmeligtOrd = ""
     var drejEllerIndtastState = true
@@ -41,6 +41,7 @@ class PlayGame : AppCompatActivity() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<ItemAdapter.ViewHolder>? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,9 @@ class PlayGame : AppCompatActivity() {
         //adapter = ItemAdapter()
         nyRecyclerView.adapter = adapter
 
-        ord = findViewById(R.id.ord)
+        //Ord fra textview
+        ord = findViewById(R.id.nyRecyclerView)
+
         pointsNumber = findViewById(R.id.pointsNumber)
         antalLiv = findViewById(R.id.antalLiv)
 
@@ -76,7 +79,7 @@ class PlayGame : AppCompatActivity() {
         Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
 
         // Set textView to the random word
-        ord.setText(secretOrd)
+        //ord.setText(secretOrd)
 
         drejHjulKnap = findViewById(R.id.drejHjul)
         wheelOutcomeDisplay = findViewById(R.id.wheelOutcome)
@@ -92,8 +95,10 @@ class PlayGame : AppCompatActivity() {
 
         }
 
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
-        val adapter = ItemAdapter(data)
+        underScoreOrd = data
+
+        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        adapter = ItemAdapter(data)
 
         nyRecyclerView.layoutManager = layoutManager
         nyRecyclerView.setHasFixedSize(true)
@@ -170,8 +175,11 @@ class PlayGame : AppCompatActivity() {
                                 pointsNumber.setText(points.toString())
                             }
 
-
-                        val charArray = LykkehjulLogic.guessLetter(ord.text.toString(), hemmeligtOrd, brugerIndtastet)
+                        var abc = ""
+                        for (words in underScoreOrd) {
+                            abc += words
+                        }
+                        val charArray = LykkehjulLogic.guessLetter(abc, hemmeligtOrd, brugerIndtastet)
 
                         val data: MutableList<Words> = ArrayList()
                         for(i in charArray) {
@@ -179,15 +187,19 @@ class PlayGame : AppCompatActivity() {
 
                         }
 
-                        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
-                        val adapter = ItemAdapter(data)
+                        underScoreOrd = data
+
+                        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+                        adapter = ItemAdapter(data)
+
+
 
                         nyRecyclerView.layoutManager = layoutManager
                         nyRecyclerView.setHasFixedSize(true)
                         nyRecyclerView.adapter = adapter
 
-
                         Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
+
                     } else {
                         Toast.makeText(applicationContext,"Bostavet var der ikke, du mister et liv, drej hjulet igen ",Toast.LENGTH_LONG).show()
                         lives -= 1

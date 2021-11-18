@@ -26,26 +26,25 @@
         android:id="@+id/wheelOutcome"
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:layout_marginTop="0dp"
         android:gravity="center"
-        android:textSize="40dp"
         android:textColor="@color/white"
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ord">
+        app:layout_constraintTop_toBottomOf="@+id/nyRecyclerView">
 
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nyRecyclerView"
         android:layout_width="match_parent"
+        android:paddingStart="150dp"
         android:layout_height="100dp"
-        android:layout_marginTop="24dp"
-        android:foregroundGravity="center_horizontal"
+        android:layout_marginTop="115dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wheelOutcome"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/list_item" />
 
     <ImageView
