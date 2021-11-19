@@ -94,7 +94,6 @@ class PlayGame : AppCompatActivity() {
 
         underScoreOrd = data
 
-
         layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
         adapter = ItemAdapter(data)
 
