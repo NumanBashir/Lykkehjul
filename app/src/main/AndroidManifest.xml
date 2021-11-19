@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Lykkehjul">
         <activity
             android:name=".view.PlayGame"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"
