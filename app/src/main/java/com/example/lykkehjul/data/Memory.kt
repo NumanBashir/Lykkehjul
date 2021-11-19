@@ -11,7 +11,7 @@ class Memory {
             //Words("python"),
             //Words("swift")
             //Words("tiger"),
-            Words("haj"),
+            Words("ha"),
             //Words("fulg"),
             //Words("bjørn"),
             //Words("krokodille"),
@@ -30,9 +30,9 @@ class Memory {
             Words("10.000kr"),
             Words("500kr"),
             Words("10kr"),
-            //Words("Tabt Tur"),
-            //Words("Ekstra Tur"),
-            //Words("Fallit"),
+            Words("Tabt Tur"),
+            Words("Ekstra Tur"),
+            Words("Fallit"),
 
         )
     }

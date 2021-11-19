@@ -17,7 +17,6 @@ import com.example.lykkehjul.adapter.ItemAdapter
 import com.example.lykkehjul.data.Memory
 import com.example.lykkehjul.logic.LykkehjulLogic
 import com.example.lykkehjul.model.Words
-import java.lang.StringBuilder
 
 class PlayGame : AppCompatActivity() {
 
@@ -105,7 +104,11 @@ class PlayGame : AppCompatActivity() {
         drejHjul()
         guessLetter()
 
-
+        // DENNE FRAGMENT SKAL ORDNES
+        /*if(underScoreOrd2.contains("_")) {
+            val dialog2 = VundetFragment()
+            dialog2.show(supportFragmentManager, "customDialog")
+        }*/
 
 
 
@@ -153,6 +156,7 @@ class PlayGame : AppCompatActivity() {
             }
 
 
+
         }
     }
 
@@ -188,11 +192,11 @@ class PlayGame : AppCompatActivity() {
                             }
                         gætBogstav.setText("")
 
-                        var abc = ""
+                        var setUnderscoreOrd = ""
                         for (words in underScoreOrd) {
-                            abc += words
+                            setUnderscoreOrd += words
                         }
-                        val charArray = LykkehjulLogic.guessLetter(abc, hemmeligtOrd, brugerIndtastet)
+                        val charArray = LykkehjulLogic.guessLetter(setUnderscoreOrd, hemmeligtOrd, brugerIndtastet)
 
                         val data: MutableList<Words> = ArrayList()
                         for(i in charArray) {
@@ -205,7 +209,10 @@ class PlayGame : AppCompatActivity() {
                         layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
                         adapter = ItemAdapter(data)
 
-
+                        if(!setUnderscoreOrd.contains("_")) {
+                            val dialog2 = VundetFragment()
+                            dialog2.show(supportFragmentManager, "customDialog")
+                        }
 
                         nyRecyclerView.layoutManager = layoutManager
                         nyRecyclerView.setHasFixedSize(true)
@@ -218,6 +225,8 @@ class PlayGame : AppCompatActivity() {
                         lives -= 1
                         antalLiv.setText(lives.toString())
                         gætBogstav.setText("")
+
+
                     }
 
 
@@ -226,6 +235,13 @@ class PlayGame : AppCompatActivity() {
             } else {
                 Toast.makeText(applicationContext,"Du har ikke drejet hjulet endnu",Toast.LENGTH_SHORT).show()
             }
+
+            if(lives == 0) {
+                val dialog = TabtFragment()
+                dialog.show(supportFragmentManager,"customDialog")
+            }
+
+
 
 
         }
