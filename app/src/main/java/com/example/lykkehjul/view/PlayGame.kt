@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lykkehjul.GameEvents
 import com.example.lykkehjul.R
+import com.example.lykkehjul.TabtFragment
 import com.example.lykkehjul.adapter.ItemAdapter
 import com.example.lykkehjul.data.Memory
 import com.example.lykkehjul.logic.LykkehjulLogic
@@ -27,10 +28,11 @@ class PlayGame : AppCompatActivity() {
     lateinit var pointsNumber: TextView
     lateinit var antalLiv: TextView
     lateinit var nyRecyclerView: RecyclerView
+    lateinit var OpenFragment: Button
 
     private val gameManager = GameEvents()
 
-    var lives = 5
+    var lives = 3
     var points = 0
     var visHemmeligOrd = ""
     var underScoreOrd = mutableListOf<Words>()
@@ -104,15 +106,27 @@ class PlayGame : AppCompatActivity() {
         nyRecyclerView.setHasFixedSize(true)
         nyRecyclerView.adapter = adapter
 
+        /*OpenFragment = findViewById(R.id.OpenFragment)
+        OpenFragment.setOnClickListener {
+            var dialog = TabtFragment()
+
+            dialog.show(supportFragmentManager,"customDialog")
+        }*/
 
         drejHjul()
         guessLetter()
 
+
+
+
+
     }
 
     fun drejHjul() {
+
         // Spin wheel
         drejHjulKnap.setOnClickListener {
+
             if (drejEllerIndtastState) {
 
                 // Get data for loadWheel
@@ -144,11 +158,19 @@ class PlayGame : AppCompatActivity() {
                 // If user has not entered a letter
                 Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
+            if(lives == 0) {
+                val dialog = TabtFragment()
+                dialog.show(supportFragmentManager,"customDialog")
+            }
+
         }
     }
 
     fun guessLetter() {
+
         tastBogstav.setOnClickListener {
+
+
             if (!drejEllerIndtastState) {
                 if(TextUtils.isEmpty(gætBogstav.text.toString())) {
                     Toast.makeText(applicationContext,"Indtast et bogstav før du går videre",Toast.LENGTH_SHORT).show()

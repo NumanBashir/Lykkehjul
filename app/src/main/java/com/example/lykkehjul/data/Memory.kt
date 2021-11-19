@@ -11,12 +11,12 @@ class Memory {
             //Words("python"),
             //Words("swift")
             Words("tiger"),
-            //Words("haj"),
-            //Words("fulg"),
-            //Words("bjørn"),
-            //Words("krokodille"),
-            //Words("slange"),
-            //Words("edderkop"),
+            Words("haj"),
+            Words("fulg"),
+            Words("bjørn"),
+            Words("krokodille"),
+            Words("slange"),
+            Words("edderkop"),
 
         )
 
@@ -24,15 +24,15 @@ class Memory {
 
     fun loadWheel(): List<Words> {
         return listOf<Words>(
-            Words("1.000kr"),
-            Words("2.500kr"),
-            Words("5.000kr"),
-            Words("10.000kr"),
-            Words("500kr"),
-            Words("10kr"),
+            //Words("1.000kr"),
+            //Words("2.500kr"),
+            //Words("5.000kr"),
+            //Words("10.000kr"),
+            //Words("500kr"),
+            //Words("10kr"),
             Words("Tabt Tur"),
-            Words("Ekstra Tur"),
-            Words("Fallit"),
+            //Words("Ekstra Tur"),
+            //Words("Fallit"),
 
         )
     }
