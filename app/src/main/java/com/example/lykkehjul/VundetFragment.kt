@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 
-class TabtFragment: DialogFragment() {
+class VundetFragment: DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var rootView: View = inflater.inflate(R.layout.fragment_tabt,container,false)
+        var rootView: View = inflater.inflate(R.layout.fragment_vundet,container,false)
 
         val GåTilbageKnap: Button = rootView.findViewById(R.id.GåTilbageKnap)
         GåTilbageKnap.setOnClickListener {

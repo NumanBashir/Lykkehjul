@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lykkehjul.GameEvents
 import com.example.lykkehjul.R
 import com.example.lykkehjul.TabtFragment
+import com.example.lykkehjul.VundetFragment
 import com.example.lykkehjul.adapter.ItemAdapter
 import com.example.lykkehjul.data.Memory
 import com.example.lykkehjul.logic.LykkehjulLogic
@@ -71,12 +72,6 @@ class PlayGame : AppCompatActivity() {
         // Pick a random element from dataset
         hemmeligtOrd = myDataset.random().toString()
 
-        // Set each letter of word to "_"
-        val sb = StringBuilder()
-        hemmeligtOrd.forEach {
-            sb.append("_")
-        }
-        secretOrd = sb.toString()
 
         Toast.makeText(applicationContext,"Drej venligst hjulet",Toast.LENGTH_SHORT).show()
 
@@ -99,6 +94,7 @@ class PlayGame : AppCompatActivity() {
 
         underScoreOrd = data
 
+
         layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
         adapter = ItemAdapter(data)
 
@@ -106,12 +102,6 @@ class PlayGame : AppCompatActivity() {
         nyRecyclerView.setHasFixedSize(true)
         nyRecyclerView.adapter = adapter
 
-        /*OpenFragment = findViewById(R.id.OpenFragment)
-        OpenFragment.setOnClickListener {
-            var dialog = TabtFragment()
-
-            dialog.show(supportFragmentManager,"customDialog")
-        }*/
 
         drejHjul()
         guessLetter()
@@ -163,6 +153,7 @@ class PlayGame : AppCompatActivity() {
                 dialog.show(supportFragmentManager,"customDialog")
             }
 
+
         }
     }
 
@@ -196,6 +187,7 @@ class PlayGame : AppCompatActivity() {
                                 points += 10
                                 pointsNumber.setText(points.toString())
                             }
+                        gætBogstav.setText("")
 
                         var abc = ""
                         for (words in underScoreOrd) {
@@ -238,6 +230,12 @@ class PlayGame : AppCompatActivity() {
 
 
         }
+
+        /*if(underScoreOrd.contains("_")) {
+            val dialog2 = VundetFragment()
+            dialog2.show(supportFragmentManager, "customDialog2")
+        }*/
+
     }
 
 
