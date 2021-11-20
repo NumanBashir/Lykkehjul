@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/mainFragmentGame">
+
+    <fragment
+        android:id="@+id/playGameFragment"
+        android:name="com.example.lykkehjul.PlayGameFragment"
+        android:label="fragment_play_game"
+        tools:layout="@layout/fragment_play_game" />
+    <fragment
+        android:id="@+id/mainFragmentGame"
+        android:name="com.example.lykkehjul.MainFragmentGame"
+        android:label="fragment_main_game"
+        tools:layout="@layout/fragment_main_game" >
+        <action
+            android:id="@+id/action_mainFragmentGame_to_playGameFragment"
+            app:destination="@id/playGameFragment" />
+    </fragment>
+</navigation>

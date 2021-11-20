@@ -178,25 +178,7 @@ class PlayGame : AppCompatActivity() {
                 } else {
                     val brugerIndtastet = gætBogstav.text.toString()
                     if (LykkehjulLogic.erBogstavIHemmeligOrd(hemmeligtOrd, brugerIndtastet)) {
-                            if(randomOutcome.contains("1.000kr")) {
-                                points += 1000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            } else if(randomOutcome.contains("2.500kr")) {
-                                points += 2500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            } else if(randomOutcome.contains("5.000kr")) {
-                                points += 5000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            } else if(randomOutcome.contains("10.000kr")) {
-                                points += 10000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            } else if(randomOutcome.contains("500kr")) {
-                                points += 500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            } else if(randomOutcome.contains("10kr")) {
-                                points += 10 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
-                                pointsNumber.setText(points.toString())
-                            }
+                        calculatePoint(brugerIndtastet)
                         gætBogstav.setText("")
 
                         var setUnderscoreOrd = ""
@@ -265,8 +247,30 @@ class PlayGame : AppCompatActivity() {
 
     }
 
-
-
+    private fun calculatePoint(brugerIndtastet: String) {
+        if (randomOutcome.contains("1.000kr")) {
+            points += 1000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd, brugerIndtastet)
+            pointsNumber.setText(points.toString())
+        } else if (randomOutcome.contains("2.500kr")) {
+            points += 2500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd, brugerIndtastet)
+            pointsNumber.setText(points.toString())
+        } else if (randomOutcome.contains("5.000kr")) {
+            points += 5000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd, brugerIndtastet)
+            pointsNumber.setText(points.toString())
+        } else if (randomOutcome.contains("10.000kr")) {
+            points += 10000 * LykkehjulLogic.fårAntalDuplikeretBogstav(
+                hemmeligtOrd,
+                brugerIndtastet
+            )
+            pointsNumber.setText(points.toString())
+        } else if (randomOutcome.contains("500kr")) {
+            points += 500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd, brugerIndtastet)
+            pointsNumber.setText(points.toString())
+        } else if (randomOutcome.contains("10kr")) {
+            points += 10 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd, brugerIndtastet)
+            pointsNumber.setText(points.toString())
+        }
+    }
 
 
 }
