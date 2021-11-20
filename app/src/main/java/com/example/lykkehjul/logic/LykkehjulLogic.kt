@@ -29,5 +29,15 @@ object LykkehjulLogic {
         return hemmeligtOrd.contains(bogstav)
     }
 
+    fun fårAntalDuplikeretBogstav(ord: String, bogstav: String): Int {
+        var count = 0
+        for (i in ord) {
+            if(i == bogstav.get(0)) {
+                count++
+            }
+        }
+        return count
+    }
+
 }
 

@@ -18,7 +18,10 @@ class VundetFragment: DialogFragment() {
 
         val GåTilbageKnap: Button = rootView.findViewById(R.id.GåTilbageKnap)
         GåTilbageKnap.setOnClickListener {
-            dismiss()
+            //dismiss()
+            //Restart game:
+
+            //Shut down app:
         }
 
         return rootView

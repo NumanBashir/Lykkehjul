@@ -105,7 +105,7 @@ class PlayGame : AppCompatActivity() {
         guessLetter()
 
         // DENNE FRAGMENT SKAL ORDNES
-        /*if(underScoreOrd2.contains("_")) {
+        /*if(underScoreOrd.contains("_")) {
             val dialog2 = VundetFragment()
             dialog2.show(supportFragmentManager, "customDialog")
         }*/
@@ -150,10 +150,18 @@ class PlayGame : AppCompatActivity() {
                 // If user has not entered a letter
                 Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
+
             if(lives == 0) {
                 val dialog = TabtFragment()
                 dialog.show(supportFragmentManager,"customDialog")
             }
+
+            if(!underScoreOrd.contains(Words("_"))) {
+                val dialog = VundetFragment()
+                dialog.show(supportFragmentManager, "customDialog")
+            }
+
+
 
 
 
@@ -164,7 +172,6 @@ class PlayGame : AppCompatActivity() {
 
         tastBogstav.setOnClickListener {
 
-
             if (!drejEllerIndtastState) {
                 if(TextUtils.isEmpty(gætBogstav.text.toString())) {
                     Toast.makeText(applicationContext,"Indtast et bogstav før du går videre",Toast.LENGTH_SHORT).show()
@@ -172,22 +179,22 @@ class PlayGame : AppCompatActivity() {
                     val brugerIndtastet = gætBogstav.text.toString()
                     if (LykkehjulLogic.erBogstavIHemmeligOrd(hemmeligtOrd, brugerIndtastet)) {
                             if(randomOutcome.contains("1.000kr")) {
-                                points += 1000
+                                points += 1000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             } else if(randomOutcome.contains("2.500kr")) {
-                                points += 2500
+                                points += 2500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             } else if(randomOutcome.contains("5.000kr")) {
-                                points += 5000
+                                points += 5000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             } else if(randomOutcome.contains("10.000kr")) {
-                                points += 10000
+                                points += 10000 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             } else if(randomOutcome.contains("500kr")) {
-                                points += 500
+                                points += 500 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             } else if(randomOutcome.contains("10kr")) {
-                                points += 10
+                                points += 10 * LykkehjulLogic.fårAntalDuplikeretBogstav(hemmeligtOrd,brugerIndtastet)
                                 pointsNumber.setText(points.toString())
                             }
                         gætBogstav.setText("")
@@ -239,6 +246,11 @@ class PlayGame : AppCompatActivity() {
             if(lives == 0) {
                 val dialog = TabtFragment()
                 dialog.show(supportFragmentManager,"customDialog")
+            }
+
+            if(!underScoreOrd.contains(Words("_"))) {
+                val dialog = VundetFragment()
+                dialog.show(supportFragmentManager, "customDialog")
             }
 
 

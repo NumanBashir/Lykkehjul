@@ -11,7 +11,7 @@ class Memory {
             //Words("python"),
             //Words("swift")
             //Words("tiger"),
-            Words("ha"),
+            Words("hah"),
             //Words("fulg"),
             //Words("bjørn"),
             //Words("krokodille"),
