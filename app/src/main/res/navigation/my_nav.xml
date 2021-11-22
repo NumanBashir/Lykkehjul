@@ -19,4 +19,5 @@
             android:id="@+id/action_mainFragmentGame_to_playGameFragment"
             app:destination="@id/playGameFragment" />
     </fragment>
+
 </navigation>
