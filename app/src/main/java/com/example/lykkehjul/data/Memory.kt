@@ -10,7 +10,8 @@ class Memory {
             //Words("java"),
             //Words("python"),
             //Words("swift")
-            Words("h e ja"),
+            //Words("tiger"),
+            Words("h h"),
             //Words("fulg"),
             //Words("bjørn"),
             //Words("krokodille"),
