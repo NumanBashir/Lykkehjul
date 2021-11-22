@@ -1,8 +1,10 @@
 package com.example.lykkehjul.view
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -87,7 +89,12 @@ class PlayGame : AppCompatActivity() {
 
         val data: MutableList<Words> = ArrayList()
         for(i in charArray) {
-            data.add(Words("_"))
+            if(i.equals(' ')) {
+                data.add(Words("-"))
+                Log.i(TAG, "Binde streg")
+            } else {
+                data.add(Words("_"))
+            }
 
         }
 
@@ -128,43 +135,51 @@ class PlayGame : AppCompatActivity() {
                 wheelOutcomeDisplay.setText(randomOutcome)
 
                 // If spin wheel lands on any of the threes, then lives changes
-                if(randomOutcome.contains("Tabt Tur")) {
-                    Toast.makeText(applicationContext,"Du mistede et liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
-                    lives -= 1
-                    antalLiv.setText(lives.toString())
-                } else if(randomOutcome.contains("Ekstra Tur")) {
-                    Toast.makeText(applicationContext,"Du fik et ekstra liv, drej hjulet igen",Toast.LENGTH_SHORT).show()
-                    lives += 1
-                    antalLiv.setText(lives.toString())
-                } else if(randomOutcome.contains("Fallit")) {
-                    Toast.makeText(applicationContext,"Du ramte fallit, du tabte",Toast.LENGTH_SHORT).show()
-                    lives = 0
-                    antalLiv.setText(lives.toString())
-                } else {
-                    // if not any of those, then change state
-                    Toast.makeText(applicationContext,"Indtast venligst bogstav",Toast.LENGTH_SHORT).show()
-                    drejEllerIndtastState = false
-                }
+                drejHjulStatement()
 
             } else {
                 // If user has not entered a letter
                 Toast.makeText(applicationContext,"Du har ikke indtastet et bogstav",Toast.LENGTH_SHORT).show()
             }
 
-            if(lives == 0) {
-                val dialog = TabtFragment()
-                dialog.show(supportFragmentManager,"customDialog")
-            }
+            TabtSpil()
 
-            if(!underScoreOrd.contains(Words("_"))) {
-                val dialog = VundetFragment()
-                dialog.show(supportFragmentManager, "customDialog")
-            }
+            VundetSpil()
 
 
 
 
 
+        }
+    }
+
+    private fun drejHjulStatement() {
+        if (randomOutcome.contains("Tabt Tur")) {
+            Toast.makeText(
+                applicationContext,
+                "Du mistede et liv, drej hjulet igen",
+                Toast.LENGTH_SHORT
+            ).show()
+            lives -= 1
+            antalLiv.setText(lives.toString())
+        } else if (randomOutcome.contains("Ekstra Tur")) {
+            Toast.makeText(
+                applicationContext,
+                "Du fik et ekstra liv, drej hjulet igen",
+                Toast.LENGTH_SHORT
+            ).show()
+            lives += 1
+            antalLiv.setText(lives.toString())
+        } else if (randomOutcome.contains("Fallit")) {
+            Toast.makeText(applicationContext, "Du ramte fallit, du tabte", Toast.LENGTH_SHORT)
+                .show()
+            lives = 0
+            antalLiv.setText(lives.toString())
+        } else {
+            // if not any of those, then change state
+            Toast.makeText(applicationContext, "Indtast venligst bogstav", Toast.LENGTH_SHORT)
+                .show()
+            drejEllerIndtastState = false
         }
     }
 
@@ -225,15 +240,9 @@ class PlayGame : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Du har ikke drejet hjulet endnu",Toast.LENGTH_SHORT).show()
             }
 
-            if(lives == 0) {
-                val dialog = TabtFragment()
-                dialog.show(supportFragmentManager,"customDialog")
-            }
+            TabtSpil()
 
-            if(!underScoreOrd.contains(Words("_"))) {
-                val dialog = VundetFragment()
-                dialog.show(supportFragmentManager, "customDialog")
-            }
+            VundetSpil()
 
 
 
@@ -245,6 +254,20 @@ class PlayGame : AppCompatActivity() {
             dialog2.show(supportFragmentManager, "customDialog2")
         }*/
 
+    }
+
+    private fun VundetSpil() {
+        if (!underScoreOrd.contains(Words("_"))) {
+            val dialog = VundetFragment()
+            dialog.show(supportFragmentManager, "customDialog")
+        }
+    }
+
+    private fun TabtSpil() {
+        if (lives == 0) {
+            val dialog = TabtFragment()
+            dialog.show(supportFragmentManager, "customDialog")
+        }
     }
 
     private fun calculatePoint(brugerIndtastet: String) {
